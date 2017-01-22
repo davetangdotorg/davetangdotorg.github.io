@@ -1,0 +1,169 @@
+---
+layout: post
+title:  "Matrices"
+description: "Background to matrices"
+category: Maths
+tags: [maths]
+---
+{% include JB/setup %}
+
+Matrices are useful for writing linear systems more compactly. Instead of writing linear systems as:
+
+<div>
+$$1x_{1} + 2x_{2} = -1$$
+$$3x_{1} + 4x_{2} = 0$$
+$$5x_{1} + 6x_{2} = -5$$
+</div>
+
+We could write the linear systems using matrices:
+
+$$
+\begin{pmatrix}
+1 & 2 \\\\
+3 & 4 \\\\
+5 & 6
+\end{pmatrix}
+\begin{pmatrix}
+x_{1} \\\\
+x_{2}
+\end{pmatrix} =
+\begin{pmatrix}
+-1 \\\\
+0 \\\\
+5
+\end{pmatrix}
+$$
+
+### Matrix calculations
+
+The four relevant operators are:
+
+1. Addition
+2. Subtraction
+3. Scalar multiplication
+4. Matrix multiplication
+
+Addition and subtraction are straight-forward and work only with matrices that have the same dimensions. Scalar multiplication is also straight-forward; each element would be multiplied by a single number. Matrix multiplication, takes each row of the left factor and multiplies it with each column of the right factor. For example:
+
+$$
+\begin{pmatrix}
+1 & 2 \\\\
+3 & 4 \\\\
+5 & 6
+\end{pmatrix}
+\begin{pmatrix}
+x_{1} & y_{1} \\\\
+x_{2} & y_{2}
+\end{pmatrix} =
+\begin{pmatrix}
+1x_{1} + 2x_{2} & 1y_{1} + 2y_{2} \\\\
+3x_{1} + 4x_{2} & 3y_{1} + 4y_{2} \\\\
+5x_{1} + 6x_{2} & 5y_{1} + 6y_{2}
+\end{pmatrix}
+$$
+
+An $m \times n$ matrix multiplied by an $n \times p$ matrix, yields an $m \times p$ matrix. In the example above, the multiplication of a 3 by 2 matrix to a 2 by 2 matrix, yielded a 3 by 2 matrix. Furthermore, changing the order of factors usually results in a completely different product and matrices can only be multiplied if the number of columns in the left factor matches the number of row in the right factor.
+
+### Special matrices
+
+A **zero matrix** is a matrix where all elements are equal to zero.
+
+$$
+\begin{pmatrix}
+0 & 0 \\\\
+0 & 0
+\end{pmatrix}
+$$
+
+If we **transpose** this 2 by 3 matrix:
+
+$$
+\begin{pmatrix}
+1 & 2 & 3 \\\\
+4 & 5 & 6
+\end{pmatrix}
+$$
+
+we get this 3 by 2 matrix:
+
+$$
+\begin{pmatrix}
+1 & 4 \\\\
+2 & 5 \\\\
+3 & 6
+\end{pmatrix}
+$$
+
+**Symmetric matrices** are square matrices that are symmetric around their main diagonals; a symmetric matrix is always equal to its transpose. For example:
+
+$$
+\begin{pmatrix}
+1 & 1 & 1 & 1 \\\\
+1 & 2 & 4 & 4 \\\\
+1 & 4 & 3 & 9 \\\\
+1 & 4 & 9 & 4
+\end{pmatrix}
+$$
+
+**Triangular matrices** are square matrices in which the elements either above or below the main diagonal are all equal to zero. Here's an example of an **upper triangular matrix**:
+
+$$
+\begin{pmatrix}
+1 & 1 & 1 & 1 \\\\
+0 & 2 & 4 & 4 \\\\
+0 & 0 & 3 & 9 \\\\
+0 & 0 & 0 & 4
+\end{pmatrix}
+$$
+
+Here's an example of a **lower triangular matrix**:
+
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\\\
+1 & 2 & 0 & 0 \\\\
+1 & 4 & 3 & 0 \\\\
+1 & 4 & 9 & 4
+\end{pmatrix}
+$$
+
+A **diagonal matrix** is a square matrix in which all elements that are not part of its main diagonal are equal to zero. For example:
+
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\\\
+0 & 2 & 0 & 0 \\\\
+0 & 0 & 3 & 0 \\\\
+0 & 0 & 0 & 4
+\end{pmatrix}
+$$
+
+**Identity matrices** are are square matrices with $n $ rows, where all elements on the main diagonal are equal to 1 and all other elements are 0. For example:
+
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\\\
+0 & 1 & 0 & 0 \\\\
+0 & 0 & 1 & 0 \\\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+
+Multiplying a matrix with the identity matrix yields a product equal to the original matrix.
+
+If the product of two square matrices is an identity matrix, then the two factor matrices are **inverses** of each other. For example:
+
+$$
+\begin{pmatrix}
+1 & 2 \\\\
+3 & 4
+\end{pmatrix} \times
+\begin{pmatrix}
+x_{11} & x_{12} \\\\
+x_{21} & x_{22}
+\end{pmatrix} =
+\begin{pmatrix}
+1 & 0 \\\\
+0 & 1
+\end{pmatrix}
+$$
