@@ -4,6 +4,24 @@ The quickest way to start and publish your Jekyll powered blog. 100% compatible 
 
 ## Usage
 
+Create a post:
+
+~~~~{.bash}
+rake post title="Hello World"
+~~~~
+
+Create a page:
+
+~~~~{.bash}
+rake page name="about.md"
+~~~~
+
+Create a nested page:
+
+~~~~{.bash}
+rake page name="pages/about.md"
+~~~~
+
 For all usage and documentation please see: <http://jekyllbootstrap.com>
 
 ## Version
