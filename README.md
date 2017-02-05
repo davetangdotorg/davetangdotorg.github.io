@@ -24,6 +24,12 @@ rake page name="pages/about.md"
 
 For all usage and documentation please see: <http://jekyllbootstrap.com>
 
+Serve locally
+
+~~~~{.bash}
+bundle exec jekyll serve
+~~~~
+
 ## Version
 
 0.3.0 - stable and versioned using [semantic versioning](http://semver.org/).
