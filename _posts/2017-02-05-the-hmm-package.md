@@ -2,8 +2,8 @@
 layout: post
 title: "The HMM package"
 description: ""
-category: 
-tags: []
+category: machine learning
+tags: [hmm]
 ---
 {% include JB/setup %}
 

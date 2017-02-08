@@ -1,0 +1,48 @@
+---
+title: "Tidy data"
+author: "Dave Tang"
+date: "February 8, 2017"
+output: 
+  md_document:
+    variant: markdown_github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+[Tidy data](ftp://cran.r-project.org/pub/R/web/packages/tidyr/vignettes/tidy-data.html) is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types. In tidy data:
+
+* Each variable forms a column.
+* Each observation forms a row.
+* Each type of observational unit forms a table.
+
+Use the `tidyr` package to tidy up data.
+
+```{r}
+library(tidyr)
+```
+
+Untidy data.
+
+```{r}
+dim(iris)
+head(iris)
+```
+
+The `gather()` function rearranges the data frame by specifying the columns that are categorical variables with a `-` notation.
+
+```{r}
+iris %>% gather(key = key, value = Value, -Species) %>% head()
+```
+
+The `separate()` function splits up a column based on `sep`.
+
+```{r}
+iris_tidy <- iris %>%
+  gather(key, Value, -Species) %>%
+  separate(col = key, into = c("Part", "Measure"), sep = "\\.")
+
+head(iris_tidy)
+nrow(iris_tidy)
+```
