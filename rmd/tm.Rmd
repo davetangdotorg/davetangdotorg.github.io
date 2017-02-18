@@ -1,0 +1,65 @@
+---
+title: "Text mining"
+author: "Dave Tang"
+date: "February 18, 2017"
+output: 
+  md_document:
+    variant: markdown_github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Using the tm package
+
+Using the corpus already prepared for us.
+
+```{r}
+library(tm)
+data(crude)
+crude
+inspect(crude[1:3])
+```
+
+Create a Term Document Matrix
+
+```{r}
+tdm <- TermDocumentMatrix(crude)
+tdm
+
+my_matrix <- as.matrix(tdm)
+dim(my_matrix)
+table(my_matrix == 0)
+# sparsity is the number of zeros
+# i.e. words that are not present in documents
+23065/(23065+2255)
+```
+
+Some functions that can be used on `tdm`.
+
+```{r}
+class(tdm)
+methods(class = "TermDocumentMatrix")
+methods(class = "simple_triplet_matrix")
+findFreqTerms(x = tdm, lowfreq = 10)
+
+# limit matrix to specific words
+inspect(DocumentTermMatrix(crude,
+                           list(dictionary = c("government", "market", "official"))))
+
+findAssocs(x = tdm, terms = 'government', corlimit = 0.8)
+```
+
+Simple analysis on the matrix.
+
+```{r}
+head(sort(rowSums(my_matrix), decreasing = TRUE))
+cor(my_matrix[,1], my_matrix[,2])
+set.seed(31)
+my_cluster <- kmeans(x = t(my_matrix), centers = 3)
+my_cluster$cluster
+meta(crude, 'heading')[my_cluster$cluster == 1]
+meta(crude, 'heading')[my_cluster$cluster == 2]
+```
+

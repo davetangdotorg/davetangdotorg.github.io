@@ -30,6 +30,16 @@ Serve locally
 bundle exec jekyll serve
 ~~~~
 
+## RStudio
+
+In the Rmarkdown file, change output to markdown_github and knit.
+
+```
+output: 
+  md_document:
+    variant: markdown_github
+```
+
 ## Version
 
 0.3.0 - stable and versioned using [semantic versioning](http://semver.org/).
